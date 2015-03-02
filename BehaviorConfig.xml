@@ -14,7 +14,11 @@
     -->
     <ParserRegexPatternCData>
       <![CDATA[
+<<<<<<< HEAD
+      ^(?<info>.*)$
+=======
       ^(?<info>.*)[\n\r]
+>>>>>>> origin/master
       ]]>
     </ParserRegexPatternCData>
     <ParserRegexOptionsString>Multiline Compiled</ParserRegexOptionsString>
@@ -44,7 +48,11 @@
     <BehaviorName>Log4Net</BehaviorName>
     <Grade>0</Grade>
     <!--C# date format: http://msdn.microsoft.com/en-us/library/8kb3ddd4.aspx-->
+<<<<<<< HEAD
+    <DateFormat>yyyy-MM-dd HH:mm:ss,fff</DateFormat>
+=======
     <DateFormat>dd/MM HH:mm:ss,fff</DateFormat>
+>>>>>>> origin/master
     <!--use: <date>,<thread>,<level>,<info>,<exinfo> as named groups in regex, this will identify the log line parts
     
         date = the date, which should be in the date format stated in the <DateFormat> tag.
@@ -55,12 +63,57 @@
     -->
     <ParserRegexPatternCData>
       <![CDATA[
+<<<<<<< HEAD
+      (?<date>\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2},\d{3})\s(?<level>\w{4,8})\s(?<info>.*?)\s(?<thread>\[.*?:[0-9]+\])\s-\s(?<exinfo>.*?)[\r\n]
+=======
       (?<date>\d{2}/\d{2} \d{2}:\d{2}:\d{2},\d{3})\s[\w.\s]*\[\s*(?<thread>[\w\d]*)\]\s*(?<level>\w{4,8})\s{1,5}[-\s]*\|\|\s{1,4}(?<user>.{1,20}?)\s{1,4}\|\|\s{1,4}(?<machine>.{1,20}?)\s{1,4}\|\|\s{0,4}(?<info>.*?)\n(?<exinfo>.*?)(?=\d{2}/\d{2}|\z)
+>>>>>>> origin/master
     ]]>
     </ParserRegexPatternCData>
     <ParserRegexOptionsString>ignoreCase,Multiline,Compiled,Singleline</ParserRegexOptionsString>
   </LogBehavior>
   <LogBehavior>
+<<<<<<< HEAD
+    <BehaviorName>NLog</BehaviorName>
+    <Grade>0</Grade>
+    <!--C# date format: http://msdn.microsoft.com/en-us/library/8kb3ddd4.aspx-->
+    <DateFormat>yyyy-MM-dd HH:mm:ss.fff</DateFormat>
+    <!--use: <date>,<thread>,<level>,<info>,<exinfo> as named groups in regex, this will identify the log line parts
+    
+        date = the date, which should be in the date format stated in the <DateFormat> tag.
+        info = the info usually represented inside the log line\
+        exinfo = the exception lines that follow, or other extended information (one or more lines)
+        level = the log level.
+    -->
+    <ParserRegexPatternCData>
+      <![CDATA[
+      (?<date>\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}.\d{3})\s(?<info>[\w\.\-]*)=[\r\n]*(?<exinfo>{.*})
+    ]]>
+    </ParserRegexPatternCData>
+    <ParserRegexOptionsString>ignoreCase,Multiline,Compiled</ParserRegexOptionsString>
+  </LogBehavior>
+  <LogBehavior>
+    <BehaviorName>NLog2</BehaviorName>
+    <Grade>0</Grade>
+    <!--C# date format: http://msdn.microsoft.com/en-us/library/8kb3ddd4.aspx-->
+    <DateFormat>yyyy-MM-dd HH:mm:ss.fff</DateFormat>
+    <!--use: <date>,<thread>,<level>,<info>,<exinfo> as named groups in regex, this will identify the log line parts
+    
+        date = the date, which should be in the date format stated in the <DateFormat> tag.
+        info = the info usually represented inside the log line\
+        exinfo = the exception lines that follow, or other extended information (one or more lines)
+        level = the log level.
+    -->
+    <ParserRegexPatternCData>
+      <![CDATA[
+      (?<date>\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}.\d{3})\|(?<level>Trace|Debug|Info|Warn|Error|Fatal)\|(?<info>[\w\.\-]*)\|(?<exinfo>[\w]*=[\n\r]*{.*}|.*)
+    ]]>
+    </ParserRegexPatternCData>
+    <ParserRegexOptionsString>ignoreCase,Multiline,Compiled</ParserRegexOptionsString>
+  </LogBehavior>
+  <LogBehavior>
+=======
+>>>>>>> origin/master
     <BehaviorName>UFTLog</BehaviorName>
     <Grade>0</Grade>
     <!--C# date format: http://msdn.microsoft.com/en-us/library/8kb3ddd4.aspx-->

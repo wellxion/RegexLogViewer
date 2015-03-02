@@ -318,6 +318,15 @@ namespace LogViewer
                             drRow.ErrorInfo = strInfoEx;
                             //"14/11 16:39:03,236"
                             DateTime dtmTemp = DateTime.Now;
+<<<<<<< HEAD
+                            bool ok = System.DateTime.TryParseExact(strDate, behaviorForCurrentFile.DateFormat, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dtmTemp);
+
+                            if (!ok)
+                                ok = System.DateTime.TryParseExact(strDate + "0", behaviorForCurrentFile.DateFormat, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dtmTemp);
+
+                            if (!ok)
+                                ok = System.DateTime.TryParseExact(strDate + "00", behaviorForCurrentFile.DateFormat, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dtmTemp);
+=======
                             bool ok = System.DateTime.TryParseExact(strDate, behaviorForCurrentFile.DateFormat, Application.CurrentCulture, System.Globalization.DateTimeStyles.None, out dtmTemp);
 
                             if (!ok)
@@ -325,11 +334,17 @@ namespace LogViewer
 
                             if (!ok)
                                 ok = System.DateTime.TryParseExact(strDate + "00", behaviorForCurrentFile.DateFormat, Application.CurrentCulture, System.Globalization.DateTimeStyles.None, out dtmTemp);
+>>>>>>> origin/master
 
                             if (!ok)
                                 drRow.EntryTime = DateTime.MinValue;
                             else
                                 drRow.EntryTime = dtmTemp;
+<<<<<<< HEAD
+                            if (drRow.EntryTime < DateTime.Parse("2013/07/31 11:00:00"))
+                                continue;
+=======
+>>>>>>> origin/master
                             if (strLevel.ToLower().StartsWith("trac"))
                                 strLevel = "TRACE";
                             else if (strLevel.ToLower().StartsWith("inf"))
@@ -377,15 +392,29 @@ namespace LogViewer
                     }
                 }
             }
+<<<<<<< HEAD
+            catch (Exception e)
+=======
             catch
+>>>>>>> origin/master
             {
                 //only open a file in notepad if it's a new file causing the problem...
                 if (p_intStartPos == 0)
                 {
+<<<<<<< HEAD
+                    FRMVanishingAlert.ShowForm(10, "Wrong Log Format", "Not a known log,\r\n\rOpening Notepad", "", "", 0, 0, true, FormStartPosition.Manual, false);
+
+                    string strNotepadDir = Environment.GetEnvironmentVariable("SystemRoot") + "\\System32\\notepad.exe";
+                    if (File.Exists(strNotepadDir))
+                        Process.Start(strNotepadDir, p_strLogFileName);
+                    else
+                        Process.Start(strNotepadDir.Replace("\\System32", ""), p_strLogFileName);
+=======
                     FRMVanishingAlert.ShowForm(2, "Wrong Log Format", "Not a known log,\r\n\rOpening Notepad", "", "", 0, 0, true, FormStartPosition.Manual, false);
 
                     string strWinDir = Environment.GetEnvironmentVariable("SystemRoot");
                     Process.Start(strWinDir + "\\notepad.exe", p_strLogFileName);
+>>>>>>> origin/master
                     //this.Visible = false;
                 }
                 return new List<LogEntry>();
