@@ -483,10 +483,7 @@ namespace LogViewer
         private void cmbBehaviors_SelectedIndexChanged(object sender, EventArgs e)
         {
             LogBehavior b = (LogBehavior)cmbBehaviors.SelectedItem;
-<<<<<<< HEAD
-=======
             _engine.ChosenBehavior = b;
->>>>>>> origin/master
             dataGridView1.Columns.Clear();
             _engine.ChosenBehavior.CreateGridCols(dataGridView1);
             _engine.ReparseAllLogs(b);
@@ -501,11 +498,7 @@ namespace LogViewer
 
         private void addLogFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             openFileDialog1.Filter = "txt files|*.txt|log files|*.log|All files|*.*";
-=======
-            openFileDialog1.Filter = "log files|*.log";
->>>>>>> origin/master
             DialogResult res = openFileDialog1.ShowDialog();
             if (res == DialogResult.Cancel)
                 return;
@@ -721,35 +714,23 @@ namespace LogViewer
         /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-=======
             int startCount = _gridModel.Count;
->>>>>>> origin/master
             List<string> list = new List<string>();
             list.AddRange(_engine.WatchedFiles);
             List<LogEntry> filteredNewLines = new List<LogEntry>();
             foreach (string file in list)
             {
-<<<<<<< HEAD
-                _engine.GetNewLinesForFile(file, CreateLogFilter());
-
-=======
                 filteredNewLines = _engine.GetNewLinesForFile(file, CreateLogFilter());
->>>>>>> origin/master
 
                 if (filteredNewLines.Count > 0 && !chkPinTrack.Checked && dataGridView1.Rows.Count > 0)
                     dataGridView1.FirstDisplayedCell = dataGridView1.Rows[0].Cells[0];
             }
 
             if (filteredNewLines.Count > 0)
-<<<<<<< HEAD
-            {
-=======
             //if (_gridModel.Count > startCount)
             {
                 //RefreshFilter();
 
->>>>>>> origin/master
                 _gridModel.ResetBindings();
                 _gridModel.ReSort();
                 MarkSelectedRowInGrid();
